@@ -1,6 +1,9 @@
 package Trie;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
+import java.util.Set;
 
 public class Trie {
     private NodoTrie raiz;
@@ -18,7 +21,7 @@ public class Trie {
             if (hijos.containsKey(c)) {
                 nodo = hijos.get(c);
             } else {
-                nodo = new NodoTrie(c);
+                nodo = new NodoTrie();
                 hijos.put(c, nodo);
             }
             hijos = nodo.getHijos();
@@ -66,11 +69,26 @@ public class Trie {
         return exito;
     }
 
-    public Lista listarSinonimos(String palabra) {
+    public List<String> listarSinonimos(String palabra) {
         NodoTrie nodo = buscarNodo(palabra);
         if (nodo != null) {
             return nodo.listarSinonimos();
         }
         return null;
+    }
+
+    public List<String> listarPalabras() {
+        List<String> palabras = new ArrayList<>();
+        listarPalabrasAux(raiz, "", palabras);
+        return palabras;
+    }
+
+    private void listarPalabrasAux(NodoTrie nodo, String prefijo, List<String> palabras) {
+        if (nodo.esHoja()) {
+            palabras.add(prefijo);
+        }
+        for (char c : nodo.getHijos().keySet()) {
+            listarPalabrasAux(nodo.getHijos().get(c), prefijo + c, palabras);
+        }
     }
 }

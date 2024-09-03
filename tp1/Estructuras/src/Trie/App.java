@@ -24,5 +24,7 @@ public class App {
         trie.addSinonimo("alce", "ciervo");
 
         System.out.println("listar sinonimos de ala: " + trie.listarSinonimos("ala").toString());
+
+        System.out.println("listar palabras: " + trie.listarPalabras().toString());
     }
 }

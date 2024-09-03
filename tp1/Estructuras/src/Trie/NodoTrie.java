@@ -1,19 +1,14 @@
 package Trie;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 public class NodoTrie {
-    private char c;
+
     private HashMap<Character, NodoTrie> hijos = new HashMap<>();
-    private boolean esHoja;
-    private Lista sinonimos = new Lista();
-
-    public NodoTrie() {
-    }
-
-    public NodoTrie(char c) {
-        this.c = c;
-    }
+    private boolean esHoja = false;
+    private List<String> sinonimos = new ArrayList<>();
 
     public HashMap<Character, NodoTrie> getHijos() {
         return hijos;
@@ -32,10 +27,10 @@ public class NodoTrie {
     }
 
     public void addSinonimo(String sinonimo) {
-        sinonimos.agregarElem(sinonimo, sinonimos.longitud()+1);
+        sinonimos.add(sinonimo);
     }
 
-    public Lista listarSinonimos() {
+    public List<String> listarSinonimos() {
         return sinonimos;
     }
 }
