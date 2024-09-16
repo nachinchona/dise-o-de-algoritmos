@@ -2,29 +2,29 @@ package Conjuntos;
 import java.util.Random;
 
 public class Conjuntos {
-    private int[] set;
+    private int[] conjunto;
     private int cantConjuntos;
 
     public static Conjuntos generarConjuntos(int limite, int cantConjuntos) {
         Random r = new Random();
-        int[] set = new int[limite];
+        int[] conjunto = new int[limite];
 
         for (int i = 0; i < limite; i++) {
-            set[i] = r.nextInt(1,cantConjuntos+1);
+            conjunto[i] = r.nextInt(1,cantConjuntos+1);
         }
 
-        Conjuntos conjunto = new Conjuntos(set, cantConjuntos);
+        Conjuntos conjuntosDijuntos = new Conjuntos(conjunto, cantConjuntos);
 
-        return conjunto;
+        return conjuntosDijuntos;
     }
  
-    public Conjuntos(int[] set, int cantConjuntos){
-        this.set = set;
+    public Conjuntos(int[] conjunto, int cantConjuntos){
+        this.conjunto = conjunto;
         this.cantConjuntos = cantConjuntos;
     }
 
     public int buscar(int numero){
-        return set[numero];
+        return conjunto[numero];
     }
 
     public void fusionar(int a, int b) {
@@ -35,28 +35,28 @@ public class Conjuntos {
         int i = Math.min(a, b);
         int j = Math.max(a, b);
 
-        for (int j2 = 0; j2 < set.length; j2++) {
-            if (set[j2] == j) {
-                set[j2] = i;
+        for (int k = 0; k < conjunto.length; k++) {
+            if (conjunto[k] == j) {
+                conjunto[k] = i;
             }
         }
     }
 
     public String toString() {
         String r = "Elemento ";
-        for (int i = 0; i < set.length; i++) {
-            if (i < set.length-1) {
+        for (int i = 0; i < conjunto.length; i++) {
+            if (i < conjunto.length-1) {
                 r = r + Integer.toString(i) + " - ";
             } else {
                 r = r + Integer.toString(i);
             }
         }
         r = r + "\nConjunto ";
-        for (int i = 0; i < set.length; i++) {
-            if (i < set.length-1) {
-                r = r + Integer.toString(set[i]) + " - ";
+        for (int i = 0; i < conjunto.length; i++) {
+            if (i < conjunto.length-1) {
+                r = r + Integer.toString(conjunto[i]) + " - ";
             } else {
-                r = r + Integer.toString(set[i]);
+                r = r + Integer.toString(conjunto[i]);
             }
         }
         return r;

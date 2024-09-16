@@ -3,7 +3,6 @@ package Trie;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Set;
 
 public class Trie {
     private NodoTrie raiz;
@@ -34,13 +33,13 @@ public class Trie {
 
     private NodoTrie buscarNodo(String palabra) {
         HashMap<Character, NodoTrie> hijos = raiz.getHijos();
-        int length = palabra.length();
+        int longitud = palabra.length();
         boolean sigue = true;
 
         NodoTrie nodo = null;
         int i = 0;
 
-        while(i < length && sigue) {
+        while(i < longitud && sigue) {
             char c = palabra.charAt(i);
             if (hijos.containsKey(c)) {
                 nodo = hijos.get(c);
@@ -55,16 +54,16 @@ public class Trie {
         return nodo;
     }
 
-    public boolean search(String palabra) {
+    public boolean buscar(String palabra) {
         NodoTrie nodo = buscarNodo(palabra);
         return (nodo != null && nodo.esHoja());
     }
 
-    public boolean addSinonimo(String palabra, String sinonimo) {
+    public boolean anadirSinonimo(String palabra, String sinonimo) {
         NodoTrie nodo = buscarNodo(palabra);
 
         boolean exito = (nodo != null && nodo.esHoja());
-        nodo.addSinonimo(sinonimo);
+        nodo.anadirSinonimo(sinonimo);
 
         return exito;
     }

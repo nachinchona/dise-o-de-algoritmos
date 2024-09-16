@@ -11,17 +11,17 @@ public class App {
         }
 
         for (int i = 0; i < palabras.length; i++) {
-            System.out.println("Buscando "+palabras[i]+"... ---- RESULTADO: "+trie.search(palabras[i]));
+            System.out.println("Buscando "+palabras[i]+"... ---- RESULTADO: "+trie.buscar(palabras[i]));
         }
 
-        System.out.println("Buscando alioli... ---- RESULTADO: "+trie.search("alioli"));
-        System.out.println("Buscando ala... ---- RESULTADO: "+trie.search("ala"));
+        System.out.println("Buscando alioli... ---- RESULTADO: "+trie.buscar("alioli"));
+        System.out.println("Buscando ala... ---- RESULTADO: "+trie.buscar("ala"));
 
         // sinonimos
 
-        trie.addSinonimo("ala", "aleta");
-        trie.addSinonimo("ala", "helice");
-        trie.addSinonimo("alce", "ciervo");
+        trie.anadirSinonimo("ala", "aleta");
+        trie.anadirSinonimo("ala", "helice");
+        trie.anadirSinonimo("alce", "ciervo");
 
         System.out.println("listar sinonimos de ala: " + trie.listarSinonimos("ala").toString());
 

@@ -26,7 +26,7 @@ public class NodoTrie {
         this.esHoja = esHoja;
     }
 
-    public void addSinonimo(String sinonimo) {
+    public void anadirSinonimo(String sinonimo) {
         sinonimos.add(sinonimo);
     }
 
