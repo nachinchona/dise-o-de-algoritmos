@@ -1,1 +1,0 @@
-Hola a todos los que estén leyendo este texto. Este texto es utilizado para el algoritmo de Hashing en la carpeta Varios. Lee a todas las palabras repetidas y toma la cantidad de ocurrencias de cada una en un HashMap.
