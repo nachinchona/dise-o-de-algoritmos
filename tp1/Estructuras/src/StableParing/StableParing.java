@@ -12,7 +12,7 @@ public class StableParing {
     private boolean[] hombreTienePareja;
 
     public StableParing(String[] h, String[] m, int[][] ph, int[][] pm, int[][] pp) {
-        N = ph.length;
+        N = h.length;
         hombres = h;
         mujeres = m;
         prefHombre = ph;
@@ -39,7 +39,8 @@ public class StableParing {
 
             int m = 0;
             while (m < N && !hombreTienePareja[h]) {
-                if (!esParejaProhibida(h, prefHombre[h][m])) {
+                System.out.println(esParejaProhibida(h, prefHombre[h][m]) + " h " + h + " m " + prefHombre[h][m]);
+                if (prefHombre[h][m] != -1 && !esParejaProhibida(h, prefHombre[h][m])) {
                     if (parejaDeMujer[prefHombre[h][m]] == -1) {
                         parejaDeMujer[prefHombre[h][m]] = h;
                         hombreTienePareja[h] = true;
@@ -54,7 +55,6 @@ public class StableParing {
                         }
                     }
                 }
-                System.out.println("hombre libre" + hombres[h] + " - mujer ahora " + mujeres[m]);
                 m++;
             }
         }
@@ -62,7 +62,8 @@ public class StableParing {
 
     public boolean esParejaProhibida(int h, int m) {
         boolean r = false;
-        for (int i = 0; i < parejasProhibidas[0].length; i++) {
+        for (int i = 0; i < parejasProhibidas.length; i++) {
+            System.out.println("h " + parejasProhibidas[i][0] + " m " + parejasProhibidas[i][1]);
             if (parejasProhibidas[i][0] == h & parejasProhibidas[i][1] == m) {
                 r = true;
             }
@@ -85,7 +86,7 @@ public class StableParing {
         String r = "";
         for (int i = 0; i < N; i++) {
             if (hombreTienePareja[i]) {
-                r = r + "Pareja " + i + ": " + hombres[i] + ", " + mujeres[parejaDeMujer[i]] + "\n";
+                r = r + "Pareja " + i + ": " + hombres[parejaDeMujer[i]] + ", " + mujeres[i] + "\n";
             }
         }
         return r;
